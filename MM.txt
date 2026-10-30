@@ -1,0 +1,438 @@
+AI Maturity Model - What this is?
+Value Proposition - Why it is worth your time?
+How to Read This Maturity Model?
+Maturity Dimensions
+Maturity Levels
+Evidence and Assessment
+Maturity Levels - Details
+Level 0 : Traditional DevOps
+Level 1 : AI Assisted
+Level 2 : AI Augmented
+Level 3 : Agentic
+Level 4 : AI Native (Not Awardable at the Moment)
+How to get assessed or get a maturity rating?
+Appendix
+How to Progress through levels - A Guide
+Understanding the Maturity Levels through Examples
+FAQs
+
+
+Security Controls
+Created by 
+
+
+Following are identified security controls for enabling DevSecOps practices in an application. The minimum required security control define the list of controls selected for minimum viable compliance framework that will be monitored for an application.
+
+#	Security Control	Acceptable Tools (per QPExpress)	Ref	
+Minimum Required Security Control
+
+Pipeline Stage	Minimum Expectation for Project Teams	Gate Recommendation	QPExpress Reporting Evidence
+1	SAST (Static Code Analysis)	SonarQube	Link	
+Yes
+
+
+
+
+
+
+
+
+
+PR and CI build	At least one SAST tool active on all production code repos	Block merge on High/Critical findings unless approved exception	Scan summary, finding counts by severity, build status
+Veracode	Link
+HCL AppScan	Link
+Code Scanning (GHAS) 	(yet to be approved & integrated)
+2	SSL Certificate Check
+
+TestSSL	Link	Yes	Pre-prod and periodic runtime check	TLS posture check for exposed endpoints	Warn on weak ciphers/protocols, block on expired/invalid certs	Endpoint tested, cert validity, protocol/cipher results
+SSL Labs	Link
+3	Security Header Analyzer
+
+HAR Security Header Analyzer	Link	Yes	Pre-prod and release validation	Security headers verified for web apps	Warn on missing non-critical headers, block on critical baseline misses	Header checklist, missing headers, severity, pass/fail
+SLB Header Security Analyzer	Link
+4	DAST (Dynamic Application Security Testing)	HCL AppScan	Link	No	Pre-prod and release validation	DAST on internet-facing apps and APIs; scheduled for internal apps	Block release for unresolved High/Critical exploitable findings	Target URL/API, scan timestamp, exploitable findings, pass/fail
+Veracode	Link
+ZAP Web	Link
+ZAP API	Link
+5	
+SCA (Supply Chain Analysis)
+
+Vulnerability + License
+
+ 
+
+ 
+
+Snyk	Link	Yes	PR, CI build, scheduled monitoring	OSS vulnerability and license checks enabled on all repos with dependencies	Block on policy-defined severity/license violations	Dependency inventory, CVEs, license policy status, exceptions
+Mend	Link
+Dependabot (GHAS)	(yet to be approved & integrated)
+6	Infrastructure Scan	Qualys	Link	Yes	Pre-prod and periodic infrastructure scan	Required for hosted infrastructure components in project scope	Block promotion when critical infra exposure is unresolved	Asset scope, vulnerabilities by severity, remediation state
+7	Container Security Compliance	Trivy	Link	Yes	CI build, image registry, pre-deploy	Required for containerized workloads	Block deploy for policy-defined critical image findings	Image digest/tag, vuln summary, misconfig summary, pass/fail
+8	Standard Architecture Diagram	C4 diagram, Draw.io 	
+No	Design and release readiness	Architecture diagram maintained for each release train or major change	Warn when architecture is stale or missing review	Diagram uploaded under manual control
+9	Threat Model	Threat Modeler	Link	No	Design and pre-release review	Threat model exists for release-impacting changes and high-risk flows	Block release when material threats lack mitigation plan	Threat list, mitigation plan, approval status uploaded under manual control
+10	SBOM (Software bill of material)	SBOM generation QPExpress	Link	No	CI build and release artifact	SBOM generated for every release candidate	Warn on missing metadata, block release if SBOM is absent	SBOM artifact reference, format, generation timestamp
+11	Secret Scanning	Cortex Cloud	
+No	PR, CI build, scheduled monitoring	Secret scanning enabled on repos and artifacts	Block on exposed secrets or high-confidence secret detections	
+Not Available yet
+
+
+
+GHAS secret scanning	(yet to be approved & integrated)
+12	Threat Intelligence Check	VirusTotal	Link	No	Dependency/Artifact validation	Reputation check for suspicious artifacts/IOCs where applicable	Block when known malicious indicators are detected	Artifact/IOC checked, verdict, confidence, action taken
+13	Agentic Code Scanning 	MDASH or approved equivalent agentic code scanning	(yet to be approved & integrated)	No	PR, CI build, and release readiness	Agentic code scanning enabled for AI-assisted/agentic code paths	Block promotion on policy-defined high-risk agentic findings	Not Approved yet
+
+
+
+
+=========================
+
+What is AI Maturity Assessment?
+Is this maturity model applicable to a portfolio, team, or application?
+Does a legacy or brownfield application get graded on the same curve as a greenfield application?
+Does having GitHub Copilot, ACE, agents, or automation automatically increase maturity?
+What determines a team's maturity level?
+If I use AI in just one SDLC phase, do I qualify for a maturity level?
+What is the difference between Candidate Level and Awarded Level?
+Why do all six assessment tests matter?
+What is the difference between L2 and L3?
+If I have agents, am I automatically L3?
+Is there a minimum required maturity level?
+Will assessment results be published?
+What happens if we regress?
+Can we request an exemption if our technology stack differs from the examples?
+Are the metric targets mandatory pass/fail gates?
+What tools are approved?
+How is the assessment performed?
+What all should be included in repository level instruction file?
+Coding Conventions
+Testing Practices
+Validation and Documentation Standards
+Organizational and Compliance Constraints 
+Treating Instruction Files as Living Context Engineering Artifacts
+How often will teams be reassessed?
+What are the definitions of the metrics?
+What tools are recommended per SDLC stage?
+What are core delivery roles?
+Can different maturity dimensions be at different levels?
+What is the tool stack that is approved?
+Example of a working agreement? Document
+What is AI Maturity Assessment?
+AI maturity assessment evaluates your app teams readiness and capabilities across six key dimensions and It provides a comprehensive view of where you are today and a roadmap for where you need to go. The intent is not to mindlessly
+
+Is this maturity model applicable to a portfolio, team, or application?
+The primary assessment unit is the application level, because that is where evidence can be directly validated, including repositories, workflows, instructions, controls, agents, metrics, and operating practices.
+
+Where multiple Scrum teams share the same repositories, workflows, controls, metrics, and operating model, they may be assessed as a single delivery unit. 
+
+For applications delivered by multiple scrum teams, operating independently, an application may only achieve a maturity level if at least 80% of assessed teams satisfy that level and no assessed team is more than one maturity level below the claimed application rating.
+
+L1	≥80% of teams achieve L1
+L2	≥80% of teams achieve L2
+L3	≥80% of teams achieve L3
+L4	≥80% of teams achieve L4
+
+
+Portfolios do not receive a direct maturity score. Portfolio views may be created by aggregating application maturity assessments for reporting purposes.
+
+Does a legacy or brownfield application get graded on the same curve as a greenfield application?
+Yes. All applications use the same maturity model and maturity levels.
+
+However, assessment focuses on the team's ability to demonstrate the required capabilities, evidence, governance, adoption, and outcomes relative to their environment. Legacy applications should not be penalized simply because they begin from a less modern technical baseline
+
+Does having GitHub Copilot, ACE, agents, or automation automatically increase maturity?
+No.
+
+Tool deployment is not maturity.
+
+Maturity is earned through demonstrated adoption, evidence, governance, team operating model, readiness, and measurable outcomes. Teams must pass all mandatory assessment criteria for the claimed level. Assessment - How Is My Team Assessed? & AI Maturity Metrics
+
+What determines a team's maturity level?
+The first step is identifying the largest unit of SDLC work AI can repeatedly execute under governance.
+
+This determines the candidate level.
+
+The team must then pass all six mandatory assessment tests:
+
+Engineering Capability
+Adoption
+Team Model & Roles
+Readiness
+Governance
+Outcomes
+The awarded maturity level is the level for which all mandatory requirements are satisfied. Assessment - How Is My Team Assessed?
+
+If I use AI in just one SDLC phase, do I qualify for a maturity level?
+No. AI Maturity is assessed across all six dimensions of the AI Maturity Model, not solely on AI usage within a single SDLC phase. To qualify for a maturity level, teams must meet the minimum requirements for every dimension associated with that level.
+
+From a delegation and workflow adoption perspective, the table below represents the minimum SDLC coverage expected at each maturity level:
+
+SDLC Phase
+
+L1
+
+L2
+
+L3
+
+L4
+
+Planning & Requirements
+
+Required
+
+Required
+
+Required
+
+Required
+
+Design & Architecture
+
+Optional
+
+Required
+
+Required
+
+Required
+
+Development & Coding
+
+Required
+
+Required
+
+Required
+
+Required
+
+Testing & Quality
+
+Required
+
+Required
+
+Required
+
+Required
+
+Release & Deployment
+
+Optional
+
+Required
+
+Required
+
+Required
+
+Operations & SRE
+
+Optional
+
+Optional
+
+Required
+
+Required
+
+Why are the expectations phased this way?
+
+The maturity model follows a deliberate progression based on risk, complexity, and organizational readiness:
+
+Testing, documentation, and coding assistance typically offer the fastest return on investment with relatively low risk. AI can generate test cases, documentation, and implementation suggestions, while humans retain responsibility for review and approval.
+Planning, requirements, and design activities require greater contextual understanding and directly influence downstream delivery outcomes. Effective AI delegation in these areas demands stronger specifications, governance, and architectural discipline.
+Release, deployment, and operational activities introduce production and business risk. Meaningful AI delegation in these phases requires mature controls, observability, validation mechanisms, and clearly defined human accountability.
+Architectural decision support and end-to-end autonomous workflows represent advanced maturity and are only expected at higher levels where governance, measurement, and operational safeguards are firmly established.
+In summary: using AI extensively in a single SDLC phase does not automatically qualify a team for a maturity level. Maturity reflects consistent, evidence-based adoption across multiple SDLC phases and all six assessment dimensions, with broader delegation expectations as teams progress from L1 to L4.
+
+What is the difference between Candidate Level and Awarded Level?
+The candidate level identifies the highest maturity level the team may qualify for based on the largest unit of work delegated to AI.
+
+The awarded maturity level is assigned only after all required evidence, adoption, readiness, governance, team model, and outcome requirements have been successfully demonstrated.
+
+A team may demonstrate L3 engineering capability but still be assessed at L2 if other mandatory requirements are not met.
+
+Why do all six assessment tests matter?
+The model evaluates six dimensions together.
+
+A team cannot compensate for weak governance, weak evidence, or poor outcomes with stronger adoption or automation.
+
+Failure to satisfy any mandatory assessment criterion prevents the level from being awarded.
+
+What is the difference between L2 and L3?
+L2 (AI Augmented)
+
+AI executes a controlled sequence of related tasks within an SDLC phase.
+
+Humans still initiate workflows, coordinate work, supervise execution, and determine completion.
+
+L3 (Agentic)
+
+A governed agent executes an entire SDLC phase within defined permissions, controls, objectives, validation rules, and approval boundaries.
+
+Humans supervise the phase, handle exceptions, and coordinate cross-phase handoffs.
+
+The distinction is not whether an agent exists.
+
+The distinction is the largest accountable unit of work AI can safely, repeatedly, and demonstrably complete under governance.
+
+If I have agents, am I automatically L3?
+No.
+
+Many teams have agents but remain at L1 or L2.
+
+An agent alone is not evidence of maturity.
+
+To qualify for L3, the team must demonstrate phase-level execution and satisfy all six mandatory assessment tests
+
+Is there a minimum required maturity level?
+Currently, the model is intended to support learning, adoption, and progression.
+
+At present, there is no enterprise-wide minimum required maturity level. The only requirement is to start and have a baseline for 2026.
+
+Will assessment results be published?
+Yes, in a central report
+
+Future integration with an enterprise system such as DPM may be considered, but the publication model has not yet been finalized. 
+
+What happens if we regress?
+Maturity reflects the team's current operating state.
+
+If requirements, governance requirements, architecture, risk profile, or ways of working change, a reassessment may result in a different maturity level.
+
+This is treated as a normal reassessment outcome rather than a penalty. 
+
+Can we request an exemption if our technology stack differs from the examples?
+The maturity model describes required capabilities and outcomes, not a fixed technology stack.
+
+Equivalent enterprise-approved patterns, tools, platforms, or approaches may be used if they satisfy the required maturity criteria. 
+
+Are the metric targets mandatory pass/fail gates?
+Metric ranges are target indicators of maturity and are expected to be demonstrated. Exceptions will have to be signed off by portfolio mgr and may be reviewed based on application context, risk profile, release cadence, architectural constraints, or regulatory requirements.
+
+What tools are approved?
+The approved tool landscape continues to evolve.
+
+Teams should refer to enterprise AI guidance, approved enterprise platforms, and the enterprise AI portal for the latest supported tools and patterns.
+
+Examples referenced throughout the maturity model are illustrative and do not represent an exhaustive list of approved technologies. 
+
+How is the assessment performed?
+The detailed assessment process is documented in the Assessment section of the maturity model.
+
+Assessment - How Is My Team Assessed?
+
+What all should be included in repository level instruction file?
+Repository-level instruction files should codify:
+
+Coding Conventions
+Style guides (indentation, naming, formatting)
+Approved patterns and anti-patterns
+Technology stack specifics (frameworks, libraries, versions)
+A well maintained instructions.md file that describes the project's architecture, conventions and constraints shapes every interaction an AI agent has with the codebase
+Testing Practices
+Test structure requirements (unit vs. integration)
+Logging and observability standards
+Enforce a 'minimalist-first' Approach; Implement proper logging and reporting mechanisms
+Validation and Documentation Standards
+Acceptance criteria format
+Documentation expectations
+Quality gates and review expectations
+Documentation stored in the same repository as application code improves an AI agent's understanding and highlights unique contextual details for target audiences
+Organizational and Compliance Constraints 
+Regulatory or safety-critical requirements 
+Data residency and audit trail mandates
+Integration patterns with legacy systems
+Fail-safe protocols and operational constraints
+Treating Instruction Files as Living Context Engineering Artifacts
+These files should be versioned, reviewed, and maintained with the same rigor as code:
+
+Version control: Every change is tracked and reversible
+Peer review: Changes must be deliberate, not exploratory
+Scope appropriately: Don't create one monolithic file; scope files to projects, modules, or directories so agents receive relevant context without overwhelming them
+Evolve with feedback: When an agent fails or produces suboptimal output, add the missing context to the instruction file to prevent recurrence
+Generate code that violates compliance requirements unknowingly
+Diverge from architectural patterns you've established
+Miss domain-specific constraints (safety modes, fail-safes, audit requirements)
+Require constant rework and review
+With them, agents become predictable collaborators aligned with your standards from the first output.
+
+These files act as a procedural memory for agents, capturing institutional knowledge and evolving with feedback when agents fail tasks by adding necessary context to prevent repeat errors.
+
+How often will teams be reassessed?
+Teams may be reassessed when capabilities materially change, new evidence becomes available, or program governance requires reassessment(between a quarter to max a year)
+
+What are the definitions of the metrics?
+Lead Time for Change
+
+Time from code commit to that code successfully running in production	Less than 1 day
+Cycle Time	Time taken for a work item to move from “Committed” to “Done”	1–3 days
+Defect Leakage Rate	% of defects found in production/UAT	Under 5%
+Change Failure Rate	% of deployments to production that result in a failure requiring hotfix, rollback, or patch	0-15%
+What tools are recommended per SDLC stage?
+Stakeholder Interviews, Business case, call summarization etc	Ace	PO/BA/Delivery/PM	
+Business requirement document	Ace	BA/PO	
+User Stories and Acceptance Criteria	Ace 	BA/PO	How to Use Ace to Generate a PBI - Agentic DevOps - Confluence Wiki
+Design	Ace / copilot	UX	
+Effort Estimation and Timeline	Ace	
+
+Scrum Artifacts 	Ace	Scrum Master / Process Lead	
+Architecture Diagram	Github Copilot	Architect	Draw.io, Mermaid Diagrams via ADO or GitHub integrated Markdown
+Coding	Github Copilot	Developer	VS Code and Visual Studio both support GitHub Copilot integration
+What are core delivery roles?
+Developer
+Tester
+BA
+Scrum Master
+Product Owner
+Architect
+SRE
+Can different maturity dimensions be at different levels?
+Yes. A team may demonstrate stronger capability in one dimension than another.
+
+However, maturity is awarded at level  all mandatory assessment requirements are satisfied.
+
+Example:
+
+Engineering Capability = L3
+Adoption = L3
+Governance = L2
+Awarded maturity = L2
+
+What is the tool stack that is approved?
+
+
+
+
+
+
+
+
+Example of a working agreement?
+
+ Document
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

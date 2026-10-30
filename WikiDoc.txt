@@ -1,0 +1,21 @@
+BCP
+Architecture Diagra
+Architecture Docum
+User Manual
+User Video 
+
+
+Introduction and Goals
+Application Overview
+Stakeholder
+Architecture Constraints
+Context and Scope
+Business Context
+Technical Context
+Building Block View
+Tech Stack
+Data Model
+Deployment View
+Threat Model
+Architecture Decisions
+

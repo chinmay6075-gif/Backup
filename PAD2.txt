@@ -1,0 +1,27 @@
+Role Account Naming Convention
+Folder Framework
+Store Secrets Using Azure Key Vault
+Make your bots modular
+Capture Objects
+Variables and Naming Convention
+Error Handling
+Use Comments
+Avoid Hard Delays
+Mouse Click & Movement
+Screen Resolution
+Wild Cards
+Prompts and message box commands.
+Keep code clean
+Robustness and flexibility
+Renaming the UiSelector and WebSelector
+Renaming Power Automate Cloud Actions
+Using Scopes to Organize Complex Flows
+Using Regions to Organize Complex Desktop Flows
+Office Scripts in Power Automate Cloud
+Limitations of Power Automate Cloud
+Flow Naming Convension
+Parallel Execution and Concurrency
+Performance Optimization
+Excel Database Operations
+Common Technical Challenges and Resolutions
+Code Review & Documen

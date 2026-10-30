@@ -1,0 +1,38 @@
+Created by 
+ last updated on Aug 13, 2025  2 minute read
+Platform	Limitation	Limit Value	Notes / Source
+Power Automate	Actions per Flow	500	Microsoft official limit
+Power Automate	Nesting Depth	8 levels	Microsoft official limit
+Power Automate	Switch Cases per Action	25	Microsoft official limit
+Power Automate	Variables per Flow	250	Microsoft official limit
+Power Automate	Flows per User (non-solution)	600	Microsoft official limit
+Power Automate	Flow Run Duration	30 days	Microsoft official limit
+Power Automate	Apply to Each Concurrency	Default 25, Max 50	Microsoft official limit
+Power Automate	Expression Length	8,192 characters	Microsoft official limit
+Power Automate	Action/Trigger Name Length	80 characters	Microsoft official limit
+Power Automate	Description Length	256 characters	Microsoft official limit
+Power Automate	trackedProperties Size	16,000 characters	Microsoft official limit
+Power Automate	Do Until Loop Iterations	Default 60, Max 5,000	Microsoft official limit
+Power Automate	HTTP Request Timeout	120 sec (Consumption), 235 sec (Single-tenant)	Microsoft official limit
+Power Automate	Auto-disable Inactive Flows	90 days of inactivity	Microsoft official limit
+Power Apps	Collection Row Limit	500 by default, up to 2,000	Delegation limit
+Power Apps	Control Limit per App	500 controls	Performance recommendation
+Power Apps	Media File Size Limit	200 MB per app	Microsoft official limit
+Power Apps	Timeout for Data Calls	120 seconds	Microsoft official limit
+Power Apps	Concurrent Users per App	Depends on environment capacity	Microsoft documentation
+Dataverse	Max Columns per Table	1,024	Microsoft official limit
+Dataverse	Max Tables per Environment	Unlimited (licensing applies)	Microsoft official limit
+Dataverse	Row Size	Maximum 8 KB excluding some column types	Microsoft official limit
+Dataverse	API Request Limits	Depends on license: e.g., 40K/day Premium	Microsoft official limit
+Dataverse	Batch Request Size	1000 requests per batch	
+Microsoft official limit
+
+Power Automate Desktop	Flow File Size	100 MB	Microsoft official limit
+Power Automate Desktop	Logged Actions per Run	10,000	Microsoft official limit
+Power Automate Desktop	Data Table Columns	16,000 columns	Microsoft community reference
+Power Automate Desktop	Version Compatibility	Must use same or newer version	Microsoft official note
+Power Automate Desktop	Variable Pane Features	Full variable management support	Microsoft official feature list
+Power Automate Desktop	Tenant Management Limitations	Limited logging and no bulk API management	Microsoft community reference
+
+
+
